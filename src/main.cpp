@@ -47,6 +47,7 @@
 #include <BLEAdvertisedDevice.h>
 
 #include "LedManager.h"
+#include "DisplayManager.h"
 
 #include "BLE.h"
 #include "Preferences.h"
@@ -237,6 +238,8 @@ void setup()
   ledManager.begin();
   ledManager.setPixelColor(0, LedManager::COLOR_GREEN);
   ledManager.show();
+
+  DisplayManager.begin();
 
   delay(1000); // Espera 1 segundo antes de comenzar
 
@@ -432,4 +435,5 @@ void loop()
     delay(appPrefs.wifi_channel_dwell_time);
   }
   BLEStatusUpdater.update();
+  DisplayManager.update();
 }
